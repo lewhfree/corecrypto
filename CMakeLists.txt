@@ -1,7 +1,7 @@
 project(darling-corecrypto)
 
 add_compile_options(
-	-Wno-return-type
+	-w
 )
 
 add_definitions(
@@ -71,4 +71,4 @@ set(corecrypto_sources
 		src/ccxts.c
 		src/ccckg.c
 )
-add_library(corecrypto SHARED ${corecrypto_sources})
+add_library(corecrypto STATIC ${corecrypto_sources})
