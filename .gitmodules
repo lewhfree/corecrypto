@@ -1,3 +1,0 @@
-[submodule "tests/ctest"]
-	path = tests/ctest
-	url = https://github.com/darlinghq/ctest.git
