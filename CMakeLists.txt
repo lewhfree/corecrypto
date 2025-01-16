@@ -72,3 +72,4 @@ set(corecrypto_sources
 		src/ccckg.c
 )
 add_library(corecrypto STATIC ${corecrypto_sources})
+install(TARGETS corecrypto DESTINATION lib)
