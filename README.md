@@ -1,22 +1,18 @@
-# Darling-CoreCrypto
+# lewhfree/CoreCrypto
 
-Rewrite of Apple CoreCrypto for the Darling project.
+Fix of corecrypto compilable on armv6hf - used for lewhfree/altserver-linux
 
-## Testing
+OG description - Rewrite of Apple CoreCrypto for the Darling project.
 
-Setting the `ENABLE_TESTS` CMake option to ON as shown below will build CoreCrypto and the test suite
- for your native host instead of Darling. It has only been tested on Ubuntu 18.04 and OSX 10.14.
-
-We use Python (either 2 or 3) with the [`cryptography`](https://pypi.org/project/cryptography/) module to generate some of our test data, so make sure you have those installed before building.
+## Building
+We use Python 3 with the [`cryptography`](https://pypi.org/project/cryptography/) module to generate some of our test data, so make sure you have those installed before building.
 
 ```
+$ git clone https://github.com/lewhfree/corecrypto
+$ cd corecrypto
 $ mkdir build
 $ cd build
-$ cmake -DENABLE_TESTS=ON ..
+$ cmake ..
 $ make
-$ sudo make install
-$ make lkm
-$ sudo make lkm_install
-$ darling shell
-$ /usr/libexec/test_corecrypto
+$ sudo cp libcorecrypto.so /usr/lib 
 ```
