@@ -71,45 +71,4 @@ set(corecrypto_sources
 		src/ccxts.c
 		src/ccckg.c
 )
-
-if (DARLING)
-	add_compile_options(
-		-nostdinc
-	)
-
-	set(DYLIB_INSTALL_NAME "/usr/lib/system/libcorecrypto.dylib")
-	add_circular(corecrypto FAT
-		SOURCES
-			${corecrypto_sources}
-		SIBLINGS
-			system_dyld
-			compiler_rt
-			system_kernel
-			platform
-			system_malloc
-			system_c
-			system_blocks
-			system_pthread
-			macho
-			libdispatch_shared
-	)
-
-	target_link_options(corecrypto PRIVATE
-		-Wl,-exported_symbols_list,${CMAKE_CURRENT_SOURCE_DIR}/scripts/exported-symbols.exp
-	)
-
-	add_darling_static_library(corecrypto_static FAT SOURCES $<TARGET_OBJECTS:corecrypto_obj>)
-
-	install(TARGETS corecrypto DESTINATION libexec/darling/usr/lib/system)
-else()
-	add_library(corecrypto SHARED ${corecrypto_sources})
-	# TODO: define list of exported symbols for non-Apple linkers
-	# maybe we should just define CC_EXPORT and sprinkle that throughout our codebase
-	#
-	# building for non-Apple platforms is only used for quick testing at the moment,
-	# so it doesn't matter that much if we have some unwanted exported symbols
-endif()
-
-if (ENABLE_TESTS)
-	add_subdirectory(tests)
-endif (ENABLE_TESTS)
+add_library(corecrypto SHARED ${corecrypto_sources})
