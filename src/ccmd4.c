@@ -25,20 +25,11 @@
 
 #define ROTATE_LEFT(x, n) (((x) << (n)) | ((x) >> (32-(n))))
 
-static void md4_compress(ccdigest_state_t state, size_t nblocks, const void* in);
+//static void md4_compress(ccdigest_state_t state, size_t nblocks, const void* in);
 
 const uint32_t ccmd4_initial_state[4] = { 0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476 };
 
-const struct ccdigest_info ccmd4_ltc_di = {
-		.initial_state = ccmd4_initial_state,
-		.compress = md4_compress,
-		.final = ccdigest_final_64le,
-		.output_size = CCMD4_OUTPUT_SIZE,
-		.state_size = CCMD4_STATE_SIZE,
-		.block_size = CCMD4_BLOCK_SIZE,
-		.oid = CC_DIGEST_OID_MD4,
-		.oid_size = 10,
-};
+
 
 #define S11 3
 #define S12 7
@@ -164,3 +155,14 @@ static void md4_compress(ccdigest_state_t state, unsigned long nblocks, const vo
         buf += CCMD4_BLOCK_SIZE;
     }
 }
+
+const struct ccdigest_info ccmd4_ltc_di = {
+		.initial_state = ccmd4_initial_state,
+		.compress = md4_compress,
+		.final = ccdigest_final_64le,
+		.output_size = CCMD4_OUTPUT_SIZE,
+		.state_size = CCMD4_STATE_SIZE,
+		.block_size = CCMD4_BLOCK_SIZE,
+		.oid = CC_DIGEST_OID_MD4,
+		.oid_size = 10,
+};
