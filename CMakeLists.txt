@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 project(darling-corecrypto)
-add_compile_options(
-	-w
-)
+add_compile_options(-Wno-incompatible-pointer-types -w)
 
 add_definitions(
 	-DDEBUG
