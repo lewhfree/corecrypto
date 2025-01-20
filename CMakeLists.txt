@@ -71,3 +71,4 @@ set(corecrypto_sources
 )
 add_library(corecrypto STATIC ${corecrypto_sources})
 install(TARGETS corecrypto DESTINATION lib)
+install(DIRECTORY include/ DESTINATION include)
