@@ -115,7 +115,7 @@ CC_CONST CC_INLINE cc_size cczp_n(cczp_const_short_t zp)
 
 CC_CONST CC_INLINE const cc_unit *cczp_recip(cczp_const_t zp)
 {
-	return CCZP_CONST_T_U(zp) + cczp_n(zp) + ccn_nof_size(sizeof(struct cczp));
+	return CCZP_CONST_T_U(zp) + CCZP_CONST_SHORT_T_ZP(zp)->n + ccn_nof_size(sizeof(struct cczp));
 }
 
 CC_CONST CC_INLINE const cc_unit *cczp_prime(cczp_const_short_t zp)
